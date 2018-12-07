@@ -50,7 +50,22 @@ class segment_tree_recursion:
             trid = 2 * tid + 2
             self._update_node_util(tlid, asid, amid, auid, diff)
             self._update_node_util(trid, amid+1, aeid, auid, diff)
-        
+
+    # def update_range(self, l, r, diff):
+    #     self._update_range_util(0, 0, self.N-1, l, r-1, diff)
+    
+    # def _update_range_util(self, tid, asid, aeid, usid, ueid, diff):
+    #     if ueid < asid or aeid < usid:
+    #         return 
+    #     if asid == aeid:
+    #         self.T[tid] = self.merge(self.T[tid], diff)
+    #     amid = self._get_mid_ind(asid, aeid)
+    #     tlid = 2 * tid + 1
+    #     trid = 2 * tid + 2
+    #     self._update_range_util(tlid, asid, amid, usid, ueid, diff)
+    #     self._update_range_util(trid, amid+1, aeid, usid, ueid, diff)
+    #     self.T[tid] = self.merge(self.T[tlid], self.T[trid])
+
     def query(self, l, r):
         return self._query_util(0, 0, self.N-1, l, r-1)
 
@@ -92,7 +107,19 @@ class segment_tree_no_recursion:
         while i > 1:
             self.T[i//2] = self.merge(self.T[i], self.T[i^1])
             i = i//2
-    
+
+    # def update_range(self, l, r, diff):
+    #     l += self.N; r += self.N 
+    #     while l < r:
+    #         if l%2 == 1:
+    #             self.T[l] = self.merge(self.T[l], diff)
+    #             l += 1
+    #         if r%2 == 1:
+    #             r -= 1
+    #             self.T[r] = self.merge(self.T[r], diff)
+    #         l = l//2
+    #         r = r//2
+
     def query(self, l, r):
         res = 0
         l += self.N; r += self.N 
@@ -117,10 +144,15 @@ if __name__ == '__main__':
     # print('st1: ', st1.T)
     # print('-------------')
     # print('st2: ', st2.T)
-    st1.update_node(4, 5)
-    st2.update_node(4, 5)
+    # st1.update_node(4, 5)
+    # st2.update_node(4, 5)
+    # st1.update_range(2, 4, 2)
+    # print(st2.T)
+    # st2.update_range(2, 4, 2)
+    # print(st2.T)
     print(st1.query(1, 6))
     print(st2.query(1, 6))
+    
 
     
     
