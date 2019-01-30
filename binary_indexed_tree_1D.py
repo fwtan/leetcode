@@ -23,9 +23,11 @@ class BITree:
         n = len(A)
         self.N = n
         self.T = (n+1)*[0]
-        for i in range(n):
+        # for i in range(n):
+        for i in range(2):
             val = A[i]
             self.update_node(i, val)
+            print(self.T)
 
     def query_node(self, ind):
         res = 0
@@ -42,8 +44,7 @@ class BITree:
 if __name__ == '__main__':
     A = [19, 9, 8, 13, 1, 7, 18, 0, 19, 19, 10, 5, 15, 19, 0, 0, 16]
     bit = BITree(A)
-    # print(bit.T)
-    print(bit.query(1, 6))
+    # print(bit.query(1, 6))
         
 
 

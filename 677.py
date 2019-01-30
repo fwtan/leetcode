@@ -27,8 +27,7 @@ class MapSum:
             h = h.children[ch]
         h.leaf = True
         h.val = val
-
-    
+ 
     def sum_util(self, root):
         val = 0
         if root.leaf:
